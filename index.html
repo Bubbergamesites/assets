@@ -1,8 +1,222 @@
-<a href="/3d-bowling/">3D Bowling</a>
-<a href="/8-ball-classic/">8 Ball Classic</a>
-<a href="/amaze/">Amazer</a>
-<a href="/bowmasters/">Bowmasters</a>
-<a href="/crossy-road/">Crossy Road</a>
-<a href="/going-balls/">Going Balls</a>
-<a href="/race-master-3d/">Race Master 3D</a>
-<a href="/turbo-stars/">Turbo Stars</a>
+<html>
+
+<head>
+    <base target="_blank">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 1. Import Nunito Font */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+
+        html,
+        body {
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* 2. Set Image Background */
+            background:
+                url('background.webp');
+            background-size: cover;
+            background-position: center;
+            font-family: "Nunito", sans-serif;
+        }
+
+        .game-embed-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-sizing: border-box;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* 3. The Glassmorphism Card */
+        .button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding: 40px;
+
+            /* Allow the panel to grow with the grid */
+            width: 95%;
+            /* Responsive margin for small screens */
+            max-width: 1200px;
+            /* Increased limit for landscape view */
+            height: auto;
+            /* Adjusts height based on content */
+            box-sizing: border-box;
+
+            /* Glass effect (kept from your original) */
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px) saturate(160%);
+            -webkit-backdrop-filter: blur(15px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-text {
+            font-family: "Nunito", sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            /* Extra bold for Netlii look */
+            color: #000;
+            letter-spacing: -1px;
+            padding-bottom: 10px;
+        }
+
+        .button-grid {
+            display: grid;
+            /* Creates 4 equal columns */
+            grid-template-columns: repeat(4, 1fr);
+            /* Creates 2 rows */
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 1000px;
+            /* Increased to fit 4 buttons across */
+        }
+
+        .c-button {
+            /* ... keep your existing styles ... */
+            width: 100%;
+            /* Allow buttons to fill grid width */
+            max-width: none;
+            /* Remove restriction so they span the column */
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        /* Responsive adjustment for small screens */
+        @media (max-width: 768px) {
+            .button-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2x4 on mobile */
+            }
+        }
+
+        /* 4. Glass Buttons */
+        .c-button {
+            /* Dimensions */
+            min-height: 120px;
+            /* Increased height */
+            aspect-ratio: 16 / 9;
+            /* Keeps them in a landscape "card" shape */
+            width: 100%;
+            /* Fills the grid column */
+
+            /* Layout inside the button */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+
+            /* Typography & Style */
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: #000;
+            border-radius: 16px;
+            /* Slightly rounder for the tile look */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+
+            /* Glass & Transitions */
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box;
+        }
+
+        /* Red Theme */
+        .btn-red {
+            background: rgba(255, 65, 54, 0.4);
+            border-color: rgba(255, 65, 54, 0.6);
+        }
+
+        .btn-red:hover {
+            background: #ff4136;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Blue Theme */
+        .btn-blue {
+            background: rgba(0, 116, 217, 0.4);
+            border-color: rgba(0, 116, 217, 0.6);
+        }
+
+        .btn-blue:hover {
+            background: #0074d9;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Green Theme */
+        .btn-green {
+            background: rgba(46, 245, 39, 0.4);
+            border-color: rgba(46, 245, 39, 0.6);
+        }
+
+        .btn-green:hover {
+            background: #2ef527;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* Purple Theme */
+        .btn-purple {
+            background: rgba(176, 13, 255, 0.4);
+            border-color: rgba(176, 13, 255, 0.6);
+        }
+
+        .btn-purple:hover {
+            background: #b00dff;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Orange Theme */
+        .btn-orange {
+            background: rgba(255, 133, 27, 0.4);
+            border-color: rgba(255, 133, 27, 0.6);
+        }
+
+        .btn-orange:hover {
+            background: #ff851b;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .game-embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gameContainer" class="game-embed-container">
+        <div id="buttonWrapper" class="button-wrapper">
+            <div class="logo-text">UBG 888</div>
+            <div class="button-grid">
+                <a href="/3d-bowling" class="c-button btn-red">3D Bowling</a>
+                <a href="/crossy-road/" class="c-button btn-blue">Crossy Road</a>
+                <a href="/going-balls/" class="c-button btn-green">Going Balls</a>
+                <a href="/turbo-stars/" class="c-button btn-purple">Turbo Stars</a>
+                <a href="/race-master-3d/" class="c-button btn-orange">Race Master 3D</a>
+                <a href="/bowmasters/" class="c-button btn-red">Bow Masters</a>
+                <a href="/amaze/" class="c-button btn-blue">Amaze</a>
+                <a href="/8-ball-classic/" class="c-button btn-green">8 Ball Classic</a>
+            </div>
+        </div>
+    </div>
+</body>
